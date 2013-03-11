@@ -4,6 +4,9 @@ class YiiCrudify extends CAction
 	public $action;
 	public $layout = 'public';
 	public $theme = 'base';
+	public $redirect_after_create = array('admin');
+	public $createFormFields = array();
+	public $updateFormFields = array();
 
 	public function getModelClass()
 	{	
@@ -63,7 +66,16 @@ class YiiCrudify extends CAction
 
 	public function create()
 	{
-		
+		$model = new $this->modelClass;
+
+		if(isset($_POST[$this->modelClass]))
+		{
+			$model->attributes=$_POST[$this->modelClass];
+			if($model->save())
+				$this->redirect($this->redirect_after_create);
+		}
+
+		$this->render($this->View, array('model'=>$model ));	
 	}
 
 	public function view()

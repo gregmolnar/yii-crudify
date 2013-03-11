@@ -7,7 +7,7 @@ Example of usage:
 
 class DummyController extends Controller
 {
-  public $modelClass = 'Dummy';
+	public $modelClass = 'Dummy';
 	
 	public function actions()
 	{
@@ -16,7 +16,7 @@ class DummyController extends Controller
 				'class' => 'ext.yii-crudify.YiiCrudify',
 				'action' => 'index'
 			),
-      //.....
+	  //.....
 		);
 	}
 ```
